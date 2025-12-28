@@ -1,0 +1,183 @@
+[gd_scene load_steps=11 format=3 uid="uid://chm1bo3atddl0"]
+
+[ext_resource type="Script" uid="uid://crpwyrilct0cr" path="res://Scenes/Player/Player.cs" id="1_s0eop"]
+[ext_resource type="Texture2D" uid="uid://boqwexnw4oomf" path="res://Assets/Player/player_placeholder.png" id="2_h54ih"]
+[ext_resource type="Texture2D" uid="uid://dbhi8jg7g8su1" path="res://Assets/Weapons/sword_placeholder.svg" id="3_h54ih"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s0eop"]
+radius = 23.0
+height = 74.0
+
+[sub_resource type="Animation" id="Animation_ude3g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WeaponPivotRight:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WeaponPivotLeft:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("WeaponPivotUp:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("WeaponPivotDown:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_jmcll"]
+resource_name = "slash_left"
+length = 0.35
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WeaponPivotLeft:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.12, 0.16, 0.2, 0.24, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -1.5707964, -2.6179938, -3.1415927, -2.6179938, -1.5707964, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_h54ih"]
+resource_name = "slash_right"
+length = 0.35
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WeaponPivotRight:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.12116921, 0.15965825, 0.2, 0.24048851, 0.30007523, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.5707964, 2.443461, 3.1415927, 1.5707964, 0.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_4wape"]
+resource_name = "slash_up"
+length = 0.35
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WeaponPivotUp:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.12, 0.14, 0.16, 0.17961554, 0.20014302, 0.22, 0.24, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.87266463, -1.5707964, -0.5235988, 0.17453292, 1.0471976, 1.5707964, 0.7853982, 0.17453292, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_t26db"]
+resource_name = "slash_down"
+length = 0.35
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WeaponPivotDown:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.12, 0.16, 0.2, 0.22, 0.24, 0.26, 0.28, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.7853982, 1.5707964, 2.6179938, 3.4906585, 4.1887903, 4.712389, 3.4906585, 1.5707964, 0.7853982, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jmcll"]
+_data = {
+&"RESET": SubResource("Animation_ude3g"),
+&"slash_down": SubResource("Animation_t26db"),
+&"slash_left": SubResource("Animation_jmcll"),
+&"slash_right": SubResource("Animation_h54ih"),
+&"slash_up": SubResource("Animation_4wape")
+}
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("SpriteBody", "SwordNode", "AnimationPlayer")]
+script = ExtResource("1_s0eop")
+SpriteBody = NodePath("Body/BodySprite")
+SwordNode = NodePath("WeaponPivotRight/Sword")
+SlashArcDeg = 180.0
+SlashTime = 1.0
+AnimationPlayer = NodePath("player_animations")
+
+[node name="Body" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_s0eop")
+debug_color = Color(0, 0.6313726, 0.48235294, 0.8235294)
+
+[node name="BodySprite" type="Sprite2D" parent="Body"]
+position = Vector2(3.8402054, -3.350309)
+scale = Vector2(0.18812421, 0.18496215)
+texture = ExtResource("2_h54ih")
+hframes = 2
+vframes = 2
+frame = 3
+
+[node name="WeaponPivotRight" type="Node2D" parent="."]
+position = Vector2(32, 0)
+
+[node name="Sword" type="Node2D" parent="WeaponPivotRight"]
+position = Vector2(0, -1.9073486e-06)
+scale = Vector2(0.23999834, 2.1200006)
+
+[node name="SwordSprite" type="Sprite2D" parent="WeaponPivotRight/Sword"]
+position = Vector2(1.5258789e-05, -17.924522)
+scale = Vector2(1.0778188, 0.2811604)
+texture = ExtResource("3_h54ih")
+
+[node name="WeaponPivotLeft" type="Node2D" parent="."]
+position = Vector2(-24, -2)
+
+[node name="WeaponPivotUp" type="Node2D" parent="."]
+position = Vector2(22, -14)
+
+[node name="WeaponPivotDown" type="Node2D" parent="."]
+position = Vector2(-13, -14)
+
+[node name="player_animations" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_jmcll")
+}
